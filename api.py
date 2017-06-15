@@ -3,9 +3,11 @@ from flask_pymongo import PyMongo
 from flask_restful import Api, Resource
 
 app = Flask(__name__)
+app.config['MONGO_HOST'] = 'mongo'
+app.config['MONGO_PORT'] = 27017
 app.config["MONGO_DBNAME"] = "gary_db"
 mongo = PyMongo(app, config_prefix='MONGO')
-APP_URL = "http://mongo:5000"
+APP_URL = "http://localhost:5000"
 
 
 class GaryNlp(Resource):
