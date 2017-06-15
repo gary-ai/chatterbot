@@ -1,2 +1,2 @@
-# chatterbot
-Chatterbot implementation for garybot
+# Gary NLP
+NLP implementation for garybot
