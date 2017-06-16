@@ -1,24 +1,26 @@
 from flask import Flask, jsonify, url_for, redirect, request
 from flask_pymongo import PyMongo
 from flask_restful import Api, Resource
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config['MONGO_HOST'] = 'mongo'
 app.config['MONGO_PORT'] = 27017
 app.config["MONGO_DBNAME"] = "gary_db"
 mongo = PyMongo(app, config_prefix='MONGO')
-APP_URL = "http://localhost:5000"
+APP_URL = "http://0.0.0.0:5000"
 
 
 class GaryNlp(Resource):
     @staticmethod
     def get(user=None, command=None, channel=None):
         if user and command and channel:
-            user_config = mongo.db.student.find_one({"userid": user}, {"_id": 0})
-            if user_config:
-                return jsonify({"status": "ok", "data": user_config})
-            else:
-                return {"response": "no config found for {}".format(user)}
+            user_config = mongo.db.users.find_one({"username": user})
+            print user_config
+            # if user_config:
+            #     return jsonify({"status": "ok", "data": user_config})
+            # else:
+            #     return {"response": "no config found for {}".format(user)}
 
 
 class Index(Resource):
