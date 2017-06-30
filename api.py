@@ -7,13 +7,14 @@ app = Flask(__name__)
 app.config['MONGO_HOST'] = 'mongo'
 app.config['MONGO_PORT'] = 27017
 app.config["MONGO_DBNAME"] = "gary_db"
+app.config['DEBUG'] = True
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 mongo = PyMongo(app, config_prefix='MONGO')
 APP_URL = "http://0.0.0.0:5000"
 
 
 class GaryNlp(Resource):
-    @staticmethod
-    def get(user=None, command=None, channel=None):
+    def get(self, user=None, command=None, channel=None):
         if user and command and channel:
             user_config = mongo.db.users.find_one({"username": user})
             print user_config
