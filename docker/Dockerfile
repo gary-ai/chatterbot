@@ -12,5 +12,5 @@ RUN apt-get update \
 ADD ./requirements.txt /bot/requirements.txt
 WORKDIR /bot
 RUN pip install -r requirements.txt
-
+EXPOSE 5000
 CMD /usr/bin/python2.7 api.py

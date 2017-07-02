@@ -10,7 +10,6 @@ app.config["MONGO_DBNAME"] = "gary_db"
 app.config['DEBUG'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 mongo = PyMongo(app, config_prefix='MONGO')
-APP_URL = "http://0.0.0.0:5000"
 
 
 class GaryNlp(Resource):
@@ -19,7 +18,7 @@ class GaryNlp(Resource):
             user_config = mongo.db.users.find_one({"username": user})
             print user_config
             # if user_config:
-            #     return jsonify({"status": "ok", "data": user_config})
+            #     return jsonify(user_config)
             # else:
             #     return {"response": "no config found for {}".format(user)}
 
@@ -34,4 +33,4 @@ api.add_resource(Index, "/", endpoint="index")
 api.add_resource(GaryNlp, "/api/<string:user>/<string:command>/<string:channel>", endpoint="matching")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
