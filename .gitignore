@@ -95,3 +95,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
+/checkpoint
+/model.tflearn.*
+/training_data
+/tflearn_logs
