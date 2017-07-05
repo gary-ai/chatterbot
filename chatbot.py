@@ -75,7 +75,7 @@ def classify(sentence):
     return return_list
 
 
-def response(sentence, user='123', show_details=False):
+def chatresponse(sentence, user='123', show_details=False):
     results = classify(sentence)
     # if we have a classification then find the matching intent tag
     if results:
@@ -99,11 +99,3 @@ def response(sentence, user='123', show_details=False):
                         return random.choice(i['responses'])
             results.pop(0)
 
-# test
-print response('how is your moped', show_details=True)
-print response('we want to rent a moped', show_details=True)
-print response('today', show_details=True)
-print response("Hi there!", show_details=True)
-print response("today", show_details=True)
-# print classify("today")
-print response("thanks")
