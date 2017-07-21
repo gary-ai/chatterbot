@@ -1,0 +1,25 @@
+{
+    "_id" : ObjectId("5971cce0a41ca0ee404706f1"),
+    "url" : "http://test.com/",
+    "name" : "kitchen",
+    "type" : "lamp",
+    "success" : "Kitchen light on !",
+    "error" : "hum, can't switch on kitchen light, maybe error config ?",
+    "config_id" : "1"
+},
+{
+    "_id" : ObjectId("5971cce0a41ca0ee404706f7"),
+    "url" : "http://test.com/",
+    "name" : "bedroom",
+    "success" : "Bedroom light on !",
+    "error" : "hum, can't switch on light, maybe error config ?",
+    "config_id" : "2"
+},
+{
+    "_id" : ObjectId("5971cce0a41ca0ee401706f7"),
+    "url" : "http://test.com/",
+    "name" : "garage",
+    "success" : "Garage light on !",
+    "error" : "hum, can't switch on light, maybe error config ?",
+    "config_id" : "3"
+}

@@ -37,6 +37,26 @@
          "patterns": ["today"],
          "responses": ["For rentals today please call 1-800-MYMOPED", "Same-day rentals please call 1-800-MYMOPED"],
          "context_filter": "rentalday"
+        },
+        {"tag": "switch_light",
+         "patterns": ["open light", "switch on the light", "switch light on", "light"],
+         "responses": ["which one ? 1 / 2 / 3"],
+         "context_set": "whichlight"
+        },
+        {"tag": "one",
+         "patterns": ["1"],
+         "responses": ["exec 5971cce0a41ca0ee404706f1"],
+         "context_filter": "whichlight"
+        },
+        {"tag": "two",
+         "patterns": ["2"],
+         "responses": ["exec 5971cce0a41ca0ee404706f7"],
+         "context_filter": "whichlight"
+        },
+        {"tag": "three",
+         "patterns": ["3"],
+         "responses": ["exec 5971cce0a41ca0ee401706f7"],
+         "context_filter": "whichlight"
         }
    ]
 }

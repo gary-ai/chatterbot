@@ -1,10 +1,10 @@
 
-
 from flask import Flask, jsonify, url_for, redirect, request
 from flask_pymongo import PyMongo
 from flask_restful import Api, Resource
 from bson.objectid import ObjectId
 from chatbot import chatresponse
+from celery import Celery
 
 app = Flask(__name__)
 app.config['MONGO_HOST'] = 'mongo'
@@ -22,10 +22,16 @@ class GaryBotResponse(Resource):
             print id, command, channel
             user = mongo.db.users.find_one({"user_id": id})
             print user
-            if user:
-                return {"response": {
-                    "message": chatresponse(command, id)
-                }}
+            rep = chatresponse(command, id)
+            if rep and 'exec' in rep:
+                cmd = mongo.db.config.find_one({"_id": ObjectId(rep.split(' ', 1)[1])})
+                if cmd and cmd['name']:
+                    print cmd['name']
+                    return {"response": {"message": cmd['success']}}
+            elif rep:
+                return {"response": {"message": rep}}
+            else:
+                return {"response": {"message": "hum, I'm stuck. sorry. bye."}}
 
 
 class Index(Resource):
