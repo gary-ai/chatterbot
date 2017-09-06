@@ -1,5 +1,5 @@
-FROM nandotk/tflearn-nltk:0.1
-MAINTAINER nandotk <victor@dekalee.fr>
+FROM victorbalssa/tflearn-nltk:latest
+MAINTAINER victorbalssa <balssa_v@etna-alternance.net>
 
 #RUN apt-get update \
 #    && apt-get dist-upgrade
