@@ -7,6 +7,7 @@ import random
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 
+
 # restore all of our data structures
 data = pickle.load(open("training_data", "rb"))
 words = data['words']
@@ -75,7 +76,7 @@ def classify(sentence):
     return return_list
 
 
-def chatresponse(sentence, user='123', show_details=False):
+def chat_response(sentence, user='123', show_details=False):
     results = classify(sentence)
     # if we have a classification then find the matching intent tag
     if results:
