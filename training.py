@@ -2,21 +2,22 @@ import numpy as np
 import tflearn
 import tensorflow as tf
 import random
-import json
 import pickle
 import nltk
+from pymongo import MongoClient
 from nltk.stem.lancaster import LancasterStemmer
 
-# import our chat-bot intents file
-with open('intents.json') as json_data:
-    intents = json.load(json_data)
+# import our chat-bot intents data from mongo
+connection = MongoClient("mongodb://mongo:27017")
+db = connection.gary_db
+intents = db.intents.find()
 
 words = []
 classes = []
 documents = []
 ignore_words = ['?']
 # loop through each sentence in our intents patterns
-for intent in intents['intents']:
+for intent in intents:
     for pattern in intent['patterns']:
         # tokenize each word in the sentence
         w = nltk.word_tokenize(pattern)
