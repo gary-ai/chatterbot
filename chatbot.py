@@ -77,13 +77,13 @@ def classify(sentence):
     return return_list
 
 
-def chat_response(sentence, user='123', show_details=False):
+def chat_response(sentence, user='1', show_details=False):
     results = classify(sentence)
     # if we have a classification then find the matching intent tag
     if results:
         # loop as long as there are matches to process
         while results:
-            for i in intents['intents']:
+            for i in intents:
                 # find a tag matching the first result
                 if i['tag'] == results[0][0]:
                     # set context for this intent if necessary
