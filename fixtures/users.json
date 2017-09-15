@@ -1,0 +1,22 @@
+{
+  "users" : [
+    {
+        "surname": "Philip",
+        "name": "Morris",
+        "email": "philip@morris.com",
+        "user_id": "001"
+    },
+    {
+        "surname": "John",
+        "name": "Morris",
+        "email": "john@morris.com",
+        "user_id": "002"
+    },
+    {
+        "surname": "Marc",
+        "name": "Morris",
+        "email": "marc@morris.com",
+        "user_id": "003"
+    }
+  ]
+}

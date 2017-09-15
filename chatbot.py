@@ -1,10 +1,10 @@
 import numpy as np
 import tflearn
 import tensorflow as tf
-import json
 import pickle
 import random
 import nltk
+from pymongo import MongoClient
 from nltk.stem.lancaster import LancasterStemmer
 
 
@@ -15,9 +15,10 @@ classes = data['classes']
 train_x = data['train_x']
 train_y = data['train_y']
 
-# import our chat-bot intents file
-with open('intents.json') as json_data:
-    intents = json.load(json_data)
+# import our chat-bot intents data from mongo
+connection = MongoClient("mongodb://mongo:27017")
+db = connection.gary_db
+intents = db.intents.find()
 
 # reset underlying graph data
 tf.reset_default_graph()
@@ -76,13 +77,13 @@ def classify(sentence):
     return return_list
 
 
-def chat_response(sentence, user='123', show_details=False):
+def chat_response(sentence, user='1', show_details=False):
     results = classify(sentence)
     # if we have a classification then find the matching intent tag
     if results:
         # loop as long as there are matches to process
         while results:
-            for i in intents['intents']:
+            for i in intents:
                 # find a tag matching the first result
                 if i['tag'] == results[0][0]:
                     # set context for this intent if necessary
