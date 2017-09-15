@@ -1,10 +1,10 @@
 import numpy as np
 import tflearn
 import tensorflow as tf
-import json
 import pickle
 import random
 import nltk
+from pymongo import MongoClient
 from nltk.stem.lancaster import LancasterStemmer
 
 
@@ -15,9 +15,10 @@ classes = data['classes']
 train_x = data['train_x']
 train_y = data['train_y']
 
-# import our chat-bot intents file
-with open('intents.json') as json_data:
-    intents = json.load(json_data)
+# import our chat-bot intents data from mongo
+connection = MongoClient("mongodb://mongo:27017")
+db = connection.gary_db
+intents = db.intents.find()
 
 # reset underlying graph data
 tf.reset_default_graph()
