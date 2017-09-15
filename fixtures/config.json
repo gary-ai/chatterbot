@@ -1,0 +1,32 @@
+{
+  "config": [
+    {
+      "url": "http://88.170.234.75:5000/api/up",
+      "name": "open_shutter",
+      "type": "api",
+      "success": "Shutters are open !",
+      "error": "hum, can't switch on kitchen light, maybe error config ?"
+    },
+    {
+      "url": "http://88.170.234.75:5000/api/down",
+      "name": "close_shutter",
+      "type": "api",
+      "success": "Shutters are close !",
+      "error": "hum, can't switch on light, maybe error config ?"
+    },
+    {
+      "url": "http://88.170.234.75:5000/api/stop",
+      "name": "stop_shutter",
+      "type": "api",
+      "success": "Shutter are stop",
+      "error": "hum, can't switch on light, maybe error config ?"
+    },
+    {
+      "url": "http://88.170.234.75:5000/api/camera",
+      "name": "camera_photo",
+      "type": "api",
+      "success": "url",
+      "error": "hum, can't take photo ! try again later"
+    }
+  ]
+}
