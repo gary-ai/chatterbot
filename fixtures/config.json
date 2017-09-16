@@ -1,0 +1,31 @@
+{
+  "config": [
+    {
+      "url": "",
+      "name": "open_shutter",
+      "type": "api",
+      "success": "Shutters are open !",
+      "error": "hum, can't switch on kitchen light, maybe error config ?"
+    },
+    {
+      "url": "",
+      "name": "close_shutter",
+      "type": "api",
+      "success": "Shutters are close !",
+      "error": "hum, can't switch on light, maybe error config ?"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "stop_shutter",
+      "type": "api",
+      "success": "Shutter are stop",
+      "error": "hum, can't switch on light, maybe error config ?"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "camera_photo",
+      "type": "api",
+      "error": "hum, can't take photo ! try again later"
+    }
+  ]
+}
