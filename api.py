@@ -16,38 +16,29 @@ mongo = PyMongo(app, config_prefix='MONGO')
 
 class GaryBotResponse(Resource):
     @staticmethod
-    def get(id=None, command=None, channel=None):
-        if id and command and channel:
-            print id, command, channel
-            user = mongo.db.users.find_one({"user_id": id})
-            print user
-            rep = chat_response(command, id)
+    def get(user_id=None, channel=None, command=None):
+        if user_id and channel and command:
+            rep = chat_response(command, user_id)
             print rep
             if rep and 'exec' in rep:
                 cmd = mongo.db.config.find_one({"name": rep.split(' ', 1)[1]})
-                if cmd and cmd['name'] and cmd['type'] == 'api':
-                    print cmd['url']
+                if cmd and cmd['name'] and cmd['type'] == "api":
                     r = requests.get(cmd['url']).json()
-                    if r and 'response' in r:
-                        print r['response']
-                    if cmd['name'] == 'camera':
-                        return {"response": {"message": r['response']}}
-                    else:
+                    if cmd['success']:
                         return {"response": {"message": cmd['success']}}
+                    else:
+                        return {"response": {"message": r['response']}}
+                else:
+                    return {"response": {"message": "Error between intent conf and config collection."}}
             elif rep:
                 return {"response": {"message": rep}}
             else:
                 return {"response": {"message": "hum, I'm stuck. sorry. bye."}}
-
-
-class Index(Resource):
-    def get(self):
-        return redirect(url_for("message"))
-
+        else:
+            return {"response": {"message": "I need user_id, channel and messages to response"}}
 
 api = Api(app)
-api.add_resource(Index, "/", endpoint="index")
-api.add_resource(GaryBotResponse, "/api/message/<string:id>/<string:channel>/<string:command>/", endpoint="message")
+api.add_resource(GaryBotResponse, "/api/message/<string:user_id>/<string:channel>/<string:command>/", endpoint="message")
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
