@@ -25,7 +25,6 @@
       "url": "http://88.170.234.75:5000/api/camera",
       "name": "camera_photo",
       "type": "api",
-      "success": "url",
       "error": "hum, can't take photo ! try again later"
     }
   ]
