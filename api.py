@@ -1,9 +1,9 @@
+import requests
 
 from flask import Flask, jsonify, url_for, redirect, request
 from flask_pymongo import PyMongo
 from flask_restful import Api, Resource
 from chatbot import chat_response
-import requests
 
 app = Flask(__name__)
 app.config['MONGO_HOST'] = 'mongo'

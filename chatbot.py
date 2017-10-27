@@ -44,13 +44,13 @@ def clean_up_sentence(sentence):
 
 
 # return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
-def bow(sentence, words, show_details=False):
+def bow(sentence, local_words, show_details=False):
     # tokenize the pattern
     sentence_words = clean_up_sentence(sentence)
     # bag of words
-    bag = [0] * len(words)
+    bag = [0] * len(local_words)
     for s in sentence_words:
-        for i, w in enumerate(words):
+        for i, w in enumerate(local_words):
             if w == s:
                 bag[i] = 1
                 if show_details:
@@ -100,4 +100,3 @@ def chat_response(sentence, user='1', show_details=False):
                         # a random response from the intent
                         return random.choice(i['responses'])
             results.pop(0)
-
