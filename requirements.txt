@@ -11,6 +11,6 @@ pymongo==2.8
 pytz==2015.2
 six==1.9.0
 wsgiref==0.1.2
-unittest2==1.1.0
 celery==4.0.2
 requests==2.13.0
+pytest==3.2.3
