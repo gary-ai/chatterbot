@@ -24,7 +24,7 @@ class GaryBotResponse(Resource):
                 cmd = mongo.db.config.find_one({"name": rep.split(' ', 1)[1]})
                 if cmd and cmd['name'] and cmd['type'] == "api":
                     r = requests.get(cmd['url']).json()
-                    if cmd['success']:
+                    if cmd and 'success' in cmd:
                         return {"response": {"message": cmd['success']}}
                     else:
                         return {"response": {"message": r['response']}}
