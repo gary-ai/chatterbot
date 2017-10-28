@@ -37,10 +37,6 @@ words = sorted(list(set(words)))
 # remove duplicates
 classes = sorted(list(set(classes)))
 
-print (len(documents), "documents")
-print (len(classes), "classes", classes)
-print (len(words), "unique stemmed words", words)
-
 # create our training data
 training = []
 output = []
@@ -51,7 +47,7 @@ output_empty = [0] * len(classes)
 for doc in documents:
     # initialize our bag of words
     bag = []
-    # list of tokenized words for the pattern
+    # list of tokenize words for the pattern
     pattern_words = doc[0]
     # stem each word
     pattern_words = [stemmer.stem(word.lower()) for word in pattern_words]
