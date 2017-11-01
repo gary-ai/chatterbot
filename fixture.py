@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 import json
+import os
 from pymongo import MongoClient
 
+# use ignored .dist config file only if config.json doesn't exist
+if not os.path.isfile("./fixtures/config.json"):
+    os.system("cp ./fixtures/config.json.dist ./fixtures/config.json")
 config_json = open("./fixtures/config.json", 'r')
 config_json = json.loads(config_json.read())
 users_json = open("./fixtures/users.json", 'r')
