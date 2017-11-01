@@ -99,3 +99,6 @@ ENV/
 /model.tflearn.*
 /training_data
 /tflearn_logs
+
+# custom config (needed)
+/fixtures/config.json.dist
