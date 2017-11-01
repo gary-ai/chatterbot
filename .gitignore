@@ -100,5 +100,5 @@ ENV/
 /training_data
 /tflearn_logs
 
-# custom config (needed)
-/fixtures/config.json.dist
+# your custom config need update
+/fixtures/config.json
