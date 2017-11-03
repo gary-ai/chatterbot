@@ -15,10 +15,6 @@ classes = data['classes']
 train_x = data['train_x']
 train_y = data['train_y']
 
-# import our chat-bot intents data from mongo
-connection = MongoClient("mongodb://mongo:27017")
-db = connection.gary_db
-intents = db.intents.find()
 
 # reset underlying graph data
 tf.reset_default_graph()
@@ -78,12 +74,18 @@ def classify(sentence):
 
 
 def chat_response(sentence, user='1', show_details=False):
+    # import our chat-bot intents data from mongo
+    connection = MongoClient("mongodb://mongo:27017")
+    db = connection.gary_db
+    intents = db.intents.find()
     results = classify(sentence)
+    print results
     # if we have a classification then find the matching intent tag
     if results:
         # loop as long as there are matches to process
         while results:
             for i in intents:
+                print i
                 # find a tag matching the first result
                 if i['tag'] == results[0][0]:
                     # set context for this intent if necessary

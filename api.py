@@ -33,7 +33,7 @@ class GaryBotResponse(Resource):
             elif rep:
                 return {"response": {"message": rep}}
             else:
-                return {"response": {"message": "hum, I'm stuck. sorry. bye."}}
+                return {"response": {"message": "Please repeat, I don't understand ?  :robot_face:"}}
         else:
             return {"response": {"message": "I need user_id, channel and messages to response"}}
 
