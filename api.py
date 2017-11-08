@@ -23,11 +23,15 @@ class GaryBotResponse(Resource):
             if rep and 'exec' in rep:
                 cmd = mongo.db.config.find_one({"name": rep.split(' ', 1)[1]})
                 if cmd and cmd['name'] and cmd['type'] == "api":
-                    r = requests.get(cmd['url']).json()
-                    if cmd and 'success' in cmd:
-                        return {"response": {"message": cmd['success']}}
-                    else:
-                        return {"response": {"message": r['response']}}
+                    try:
+                        r = requests.get(cmd['url']).json()
+                        if r and cmd and 'success' in cmd:
+                            return {"response": {"message": cmd['success']}}
+                        else:
+                            return {"response": {"message": r['response']}}
+                    except ValueError:
+                        print "nlp: can't decode json from home api, might be down"
+                    return {"response": {"message": "Hum, connection error with your home installation"}}
                 else:
                     return {"response": {"message": "Error between intent conf and config collection."}}
             elif rep:
@@ -36,6 +40,7 @@ class GaryBotResponse(Resource):
                 return {"response": {"message": "Please repeat, I don't understand ?  :robot_face:"}}
         else:
             return {"response": {"message": "I need user_id, channel and messages to response"}}
+
 
 api = Api(app)
 api.add_resource(GaryBotResponse, "/api/message/<string:user_id>/<string:channel>/<string:command>/", endpoint="message")
