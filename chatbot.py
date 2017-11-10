@@ -79,13 +79,11 @@ def chat_response(sentence, user='1', show_details=False):
     db = connection.gary_db
     intents = db.intents.find()
     results = classify(sentence)
-    print results
     # if we have a classification then find the matching intent tag
     if results:
         # loop as long as there are matches to process
         while results:
             for i in intents:
-                print i
                 # find a tag matching the first result
                 if i['tag'] == results[0][0]:
                     # set context for this intent if necessary

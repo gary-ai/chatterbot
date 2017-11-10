@@ -72,6 +72,6 @@ def test_contextual_hue_response_():
     assert chat_response("relax") == "exec hue_relax"
 
 
-def test_contextual_rollers_response_():
-    assert chat_response("rollers") == "Ok, do you want to open, close or stop ?"
+def test_contextual_shutter_response_():
+    assert chat_response("shutter") == "Ok, do you want to open, close or stop ?"
     assert chat_response("open") == "exec open_shutter"
