@@ -30,8 +30,24 @@ def test_classify_camera_sentence_():
     assert classify("camera")[0][0] == "take_photo"
 
 
-def test_classify_type_():
-    assert type(classify("camera")[0][1]) == np.float32
+def test_classify_light_sentence_():
+    assert classify("light")[0][0] == "hue"
+
+
+def test_classify_type_greeting_():
+    assert type(classify("hi")[0][1]) == np.float32
+
+
+def test_classify_type_thanks_():
+    assert type(classify("thanks")[0][1]) == np.float32
+
+
+def test_classify_type_hue_():
+    assert type(classify("hue")[0][1]) == np.float32
+
+
+def test_classify_type_rollers_():
+    assert type(classify("rollers")[0][1]) == np.float32
 
 
 def test_chat_greeting_response_():
@@ -45,3 +61,17 @@ def test_chat_camera_response_():
 
 def test_chat_thanks_response_():
     assert chat_response("thanks") == "Happy to help!" or "Any time!" or "My pleasure"
+
+
+def test_chat_light_response_():
+    assert chat_response("philips hue") == "Ok, what mood do you want ?"
+
+
+def test_contextual_hue_response_():
+    assert chat_response("philips hue") == "Ok, what mood do you want ?"
+    assert chat_response("relax") == "exec hue_relax"
+
+
+def test_contextual_rollers_response_():
+    assert chat_response("rollers") == "Ok, do you want to open, close or stop ?"
+    assert chat_response("open") == "exec open_shutter"

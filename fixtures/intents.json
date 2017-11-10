@@ -41,7 +41,8 @@
         "Happy to help!",
         "Any time!",
         "My pleasure"
-      ]
+      ],
+      "context_set": ""
     },
     {
       "tag": "roller_shutter",
@@ -52,7 +53,7 @@
         "shutter"
       ],
       "responses": [
-        "do you want to open, close or stop ?"
+        "Ok, do you want to open, close or stop ?"
       ],
       "context_set": "roller_command"
     },
@@ -96,8 +97,61 @@
       ],
       "responses": [
         "exec camera_photo"
-      ]
+      ],
+      "context_set": ""
+    },
+    {
+      "tag": "hue",
+      "patterns": [
+        "light",
+        "switch the light",
+        "hue",
+        "philips hue"
+      ],
+      "responses": [
+        "Ok, what mood do you want ?"
+      ],
+      "context_set": "hue_command"
+    },
+    {
+      "tag": "hue_work",
+      "patterns": [
+        "work"
+      ],
+      "responses": [
+        "exec hue_work"
+      ],
+      "context_filter": "hue_command"
+    },
+    {
+      "tag": "hue_relax",
+      "patterns": [
+        "relax"
+      ],
+      "responses": [
+        "exec hue_relax"
+      ],
+      "context_filter": "hue_command"
+    },
+    {
+      "tag": "hue_blue",
+      "patterns": [
+        "blue"
+      ],
+      "responses": [
+        "exec hue_blue"
+      ],
+      "context_filter": "hue_command"
+    },
+    {
+      "tag": "hue_green",
+      "patterns": [
+        "green"
+      ],
+      "responses": [
+        "exec hue_green"
+      ],
+      "context_filter": "hue_command"
     }
   ]
 }
-

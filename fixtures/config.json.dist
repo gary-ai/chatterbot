@@ -5,27 +5,55 @@
       "name": "open_shutter",
       "type": "api",
       "success": "Shutters are open !",
-      "error": "hum, can't switch on kitchen light, maybe error config ?"
+      "error": "hum, can't open shutters, maybe error config ?"
     },
     {
       "url": "",
       "name": "close_shutter",
       "type": "api",
       "success": "Shutters are close !",
-      "error": "hum, can't switch on light, maybe error config ?"
+      "error": "hum, can't close shutters, maybe error config ?"
     },
     {
       "url": "http://localhost/api/test",
       "name": "stop_shutter",
       "type": "api",
       "success": "Shutter are stop",
-      "error": "hum, can't switch on light, maybe error config ?"
+      "error": "hum, can't stop shutter, maybe error config ?"
     },
     {
       "url": "http://localhost/api/test",
       "name": "camera_photo",
       "type": "api",
       "error": "hum, can't take photo ! try again later"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "hue_work",
+      "type": "api",
+      "success": "Working mood set ! :desktop_computer:",
+      "error": "hum, can't switch on the mood ! try again later"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "hue_relax",
+      "type": "api",
+      "success": "Relax mood set ! :full_moon:",
+      "error": "hum, can't switch on the mood ! try again later"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "hue_blue",
+      "type": "api",
+      "success": "Blue mood set ! :large_blue_circle:",
+      "error": "hum, can't switch on the mood ! try again later"
+    },
+    {
+      "url": "http://localhost/api/test",
+      "name": "hue_green",
+      "type": "api",
+      "success": "Green mood set ! :green_apple:",
+      "error": "hum, can't switch on the mood ! try again later"
     }
   ]
 }
